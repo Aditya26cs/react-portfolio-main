@@ -1,0 +1,129 @@
+@import "../../vars.css";
+
+.container {
+  color: var(--color-text);
+  margin-top: 120px;
+  background: linear-gradient(120deg, #04162D 0%, #132B58 100%);
+  border-radius: 2.5rem;
+  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.18);
+  padding: 4rem 0;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 14px;
+  background: linear-gradient(90deg, #04162D 0%, #00bcd4 50%, #04162D 100%);
+  filter: blur(12px) brightness(2.2);
+  opacity: 0.9;
+  border-radius: 14px;
+  pointer-events: none;
+  z-index: 1;
+  animation: lightningGlowBlue 2.5s infinite alternate;
+}
+
+@keyframes lightningGlowBlue {
+  0% { opacity: 0.7; filter: blur(12px) brightness(1.5); }
+  100% { opacity: 1; filter: blur(18px) brightness(2.5); }
+}
+
+.text {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.text h2, .text p {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  transition: text-shadow 0.3s, color 0.3s;
+}
+
+.text p {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.text h2:hover, .text p:hover {
+  color: #04162D;
+  text-shadow: 0 0 18px #04162D, 0 0 32px #00bcd4;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 188, 212, 0.08);
+  border-radius: 1rem;
+  padding: 1.2rem 1.7rem;
+  box-shadow: 0 4px 24px rgba(33, 150, 243, 0.10);
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+}
+
+.link:hover {
+  box-shadow: 0 8px 32px #04162D;
+  transform: translateY(-4px) scale(1.05);
+}
+
+.link img {
+  width: 38px;
+  height: 38px;
+  margin-bottom: 0.7rem;
+  filter: drop-shadow(0 2px 8px #04162D);
+}
+
+.link a {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 0.2rem;
+  transition: color 0.2s;
+}
+
+.link a:hover {
+  color: #04162D;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    padding: 2rem 0.5rem;
+    border-radius: 1.5rem;
+    max-width: 98vw;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .links {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}
