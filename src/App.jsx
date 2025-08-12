@@ -16,7 +16,7 @@ function App() {
       <TechStack />
       <Experience />
       <Projects />
-       <Contact />
+      <Contact />
 
     </div>
   );

@@ -12,40 +12,40 @@ const categories = [
 	{
 		title: "Frontend",
 		tools: [
-			{ name: "React", icon: reactIcon, tagline: "Building dynamic UIs" },
-			{ name: "Tailwind CSS", tagline: "Rapid styling, modern look" },
-			{ name: "JavaScript", tagline: "The language of the web" },
+			{ name: "React", icon: reactIcon },
+			{ name: "Tailwind CSS" },
+			{ name: "JavaScript" },
 		],
 	},
 	{
 		title: "Backend",
 		tools: [
-			{ name: "Node.js", icon: nodeIcon, tagline: "Server-side power" },
-			{ name: "Express.js", tagline: "Fast, minimalist APIs" },
+			{ name: "Node.js", icon: nodeIcon },
+			{ name: "Express.js" },
 		],
 	},
 	{
 		title: "Database",
 		tools: [
-			{ name: "MongoDB", icon: mongodbIcon, tagline: "NoSQL flexibility" },
-			{ name: "SQL", tagline: "Relational data mastery" },
+			{ name: "MongoDB", icon: mongodbIcon },
+			{ name: "SQL" },
 		],
 	},
 	{
 		title: "Tools & Platforms",
 		tools: [
-			{ name: "Postman", tagline: "API testing made easy" },
-			{ name: "VS Code", tagline: "My coding playground" },
-			{ name: "Vercel", tagline: "Instant deployments" },
-			{ name: "Git", tagline: "Version control wizardry" },
-			{ name: "GitHub", tagline: "Collaboration central" },
+			{ name: "Postman" },
+			{ name: "VS Code" },
+			{ name: "Vercel" },
+			{ name: "Git" },
+			{ name: "GitHub" },
 		],
 	},
 	{
 		title: "Programming Languages",
 		tools: [
-			{ name: "Java", tagline: "Robust & versatile" },
-			{ name: "JavaScript", tagline: "Universal web scripting" },
+			{ name: "Java" },
+			{ name: "JavaScript" },
 		],
 	},
 ];
@@ -68,7 +68,6 @@ export const TechStack = () => {
 									/>
 								)}
 								<span className={styles.skillName}>{tool.name}</span>
-								<span className={styles.toolTagline}>{tool.tagline}</span>
 							</div>
 						))}
 					</div>
