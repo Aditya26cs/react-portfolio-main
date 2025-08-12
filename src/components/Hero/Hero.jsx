@@ -3,8 +3,7 @@ import React from "react";
 import styles from "./Hero.module.css";
 import heroImage from "../../assets/hero/heroImage.png";
 import cssIcon from "../../assets/skills/css.png";
-import figmaIcon from "../../assets/skills/figma.png";
-import graphqlIcon from "../../assets/skills/graphql.png";
+ 
 import htmlIcon from "../../assets/skills/html.png";
 import mongodbIcon from "../../assets/skills/mongodb.png";
 import nodeIcon from "../../assets/skills/node.png";
@@ -35,8 +34,7 @@ export const Hero = () => {
           <img src={mongodbIcon} alt="MongoDB" className={styles.techIcon} />
           <img src={cssIcon} alt="CSS" className={styles.techIcon} />
           <img src={htmlIcon} alt="HTML" className={styles.techIcon} />
-          <img src={graphqlIcon} alt="GraphQL" className={styles.techIcon} />
-          <img src={figmaIcon} alt="Figma" className={styles.techIcon} />
+        
         </div>
       </div>
       <img
