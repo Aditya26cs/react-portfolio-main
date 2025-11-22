@@ -6,10 +6,13 @@ import { Hero } from "./components/Hero/Hero";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Projects } from "./components/Projects/Projects";
 import { TechStack } from "./components/TechStack/TechStack";
+import Cursor from  "./components/Cursor/Cursor"
+
 
 function App() {
   return (
     <div className={styles.App}>
+      <Cursor />
       <Navbar />
       <Hero />
       <About />

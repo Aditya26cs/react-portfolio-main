@@ -1,0 +1,58 @@
+/* Hides the default cursor on the body so you only see your custom one */
+body {
+  cursor: none; /* Important: This hides the standard arrow */
+}
+
+/* Also hide standard cursor on links/buttons */
+a, button, .btn {
+  cursor: none;
+}
+
+/* The small center dot */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00bcd4; /* Cyan highlight color */
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none; /* Allows you to click through the cursor */
+  box-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4; /* Neon Glow */
+}
+
+/* The trailing ring */
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(33, 150, 243, 0.5); /* Your Blue color, semi-transparent */
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9998; /* Just below the dot */
+  pointer-events: none;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* Animation when you click mouse down */
+.cursor-click {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(33, 150, 243, 0.3);
+  border-color: transparent;
+}
+
+/* MOBILE: Hide custom cursor on phones (it's annoying on touch screens) */
+@media (max-width: 768px) {
+  .cursor-dot,
+  .cursor-outline {
+    display: none;
+  }
+  body {
+    cursor: auto;
+  }
+}

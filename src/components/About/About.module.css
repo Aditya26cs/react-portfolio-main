@@ -1,153 +1,124 @@
-@import "../../vars.css";
-
+ /* MAIN CONTAINER */
 .container {
+  background: #0a192f;
+  color: white;
+  padding: 4rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.2rem 0;
-  background: linear-gradient(120deg, #04162d 0%, #132b58 100%);
-  border-radius: 2rem;
-  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.12);
-  margin: 1rem 0;
-  max-width: 1400px;
-  width: 98vw;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.title {
-  color: var(--color-text);
-  font-size: 35px;
-  font-weight: 700;
-  letter-spacing: 1.75px;
-  text-transform: uppercase;
+/* SECTION TITLE */
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-.content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+.sectionTitle span {
+  color: #64ffda;
+}
+
+/* GRID LAYOUT */
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
   width: 100%;
-  gap: 2.5rem;
+  max-width: 1100px;
 }
 
-.aboutImage {
-  width: 320px;
-  border-radius: 1.2rem;
-  box-shadow: 0 4px 24px rgba(33, 150, 243, 0.1);
+@media (max-width: 900px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
 }
 
-.aboutItems {
-  color: var(--color-text);
+/* CARD STYLE */
+.profileCard,
+.bioCard,
+.skillsCard {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.profileCard:hover,
+.bioCard:hover,
+.skillsCard:hover {
+  transform: translateY(-6px);
+}
+
+/* PROFILE */
+.profileCard {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 50px;
-}
-
-.aboutItem {
-  display: flex;
-  flex-direction: row;
   align-items: center;
+}
+
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 0 25px rgba(100,255,218,0.2);
+}
+
+.name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  background: rgba(100,255,218,0.1);
+  border: 1px solid rgba(100,255,218,0.6);
+  padding: 0.5rem 1rem;
   border-radius: 20px;
-  list-style: none;
-  padding: 25px;
-  background-image: linear-gradient(
-    90deg,
-    rgba(165, 215, 232, 0.42) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  background-size: 0 100%;
-  background-repeat: no-repeat;
-  transition: 0.4s;
+  font-size: 0.9rem;
 }
 
-.aboutItem:hover {
-  background-size: 100% 100%;
+/* BIO */
+.bioCard h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
 }
 
-.aboutItem h3 {
-  font-size: 25px;
-  font-weight: 600;
+.bioCard h3 span {
+  color: #64ffda;
 }
 
-.aboutItem p {
-  font-size: 25px;
+.bioCard p {
+  line-height: 1.7;
+  color: #c9c9c9;
 }
 
-.aboutText {
-  color: #fff;
-  margin-left: 2rem;
+/* SKILLS */
+.skillsCard {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background: rgba(0, 188, 212, 0.08);
-  border-radius: 1.2rem;
-  padding: 2.5rem 3rem;
-  box-shadow: 0 4px 24px rgba(33, 150, 243, 0.12);
-  max-width: 700px;
+  gap: 1rem;
 }
 
-.aboutText h3 {
-  font-size: 2.1rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 8px rgba(0, 188, 212, 0.18);
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.aboutText ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.skillItem:hover {
+  transform: translateX(8px);
 }
 
-.aboutText li {
-  font-size: 1.35rem;
-  margin-bottom: 1.2rem;
-  position: relative;
-  padding-left: 2.2rem;
-  color: #fff;
-  font-weight: 500;
-}
-
-@media screen and (max-width: 900px) {
-  .container {
-    padding: 0.7rem 0.2rem;
-    border-radius: 1rem;
-    max-width: 99vw;
-  }
-  .content {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  .aboutText {
-    padding: 1.2rem 1rem;
-    max-width: 99vw;
-  }
-  .aboutImage {
-    width: 220px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .container {
-    padding: 0.3rem 0.1rem;
-    border-radius: 0.7rem;
-    max-width: 100vw;
-  }
-  .aboutText {
-    padding: 0.7rem 0.5rem;
-    border-radius: 0.7rem;
-    max-width: 100vw;
-  }
-  .aboutText h3 {
-    font-size: 1.2rem;
-  }
-  .aboutText li {
-    font-size: 1rem;
-  }
-  .aboutImage {
-    width: 120px;
-  }
+.skillItem span {
+  font-size: 1.8rem;
 }

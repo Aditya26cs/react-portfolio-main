@@ -1,82 +1,111 @@
 @import "../../vars.css";
 
+/* --- 1. The Container --- */
 .navbar {
-  position: relative;
+  position: fixed; /* Sticks to top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  height: 80px; /* Fixed height ensures items don't jump around */
+  
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 61px;
-  z-index: 2;
-  margin: 0 10%;
+  align-items: center; /* Vertically centers Logo and Text */
+  justify-content: space-between; /* Pushes Logo Left, Menu Right */
+  
+  padding: 0 10%; /* 10% spacing on sides */
+  z-index: 100;
+  
+  /* Glassy Background */
+  background: rgba(4, 21, 45, 0.85); /* Darker background so it's readable */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
+/* --- 2. The Logo --- */
 .title {
-  font-size: 30px;
-  font-weight: 600;
+  font-size: 1.8rem; /* 30px approx */
+  font-weight: 800;
   text-decoration: none;
-  color: var(--color-text);
+  color: #fff;
+  letter-spacing: 1px;
+  white-space: nowrap; /* Prevents logo from breaking lines */
 }
 
-
-.menuBtn {
-  display: none;
-}
-
+/* --- 3. The Menu Wrapper --- */
 .menu {
   display: flex;
+  align-items: center;
 }
 
+/* --- 4. The Menu Items (Desktop) --- */
 .menuItems {
   display: flex;
-  gap: 47px;
-  list-style: none;
+  gap: 40px; /* Clean spacing between links */
+  list-style: none; /* Removes bullet points */
+  margin: 0; /* CRITICAL: Removes default browser margin */
+  padding: 0; /* CRITICAL: Removes default browser padding */
 }
 
 .menuItems a {
-  font-size: 25px;
-  color: var(--color-text);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #e0e6ed;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
+.menuItems a:hover {
+  color: #00d2ff; /* Cyan highlight */
+}
+
+/* --- 5. Mobile Menu Icon (Hidden on Desktop) --- */
+.menuBtn {
+  display: none; 
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+}
+
+/* --- 6. MOBILE RESPONSIVENESS --- */
 @media screen and (max-width: 830px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .menu {
-    position: absolute;
-    right: 0;
-    margin-right: 10%;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 11px;
-    z-index: 3;
+    padding: 0 5%; /* Less side padding on mobile */
+    height: 70px;
   }
 
   .menuBtn {
-    display: block;
-    cursor: pointer;
+    display: block; /* Show hamburger */
+    z-index: 102; /* On top of the drawer */
   }
 
   .menuItems {
-    display: none;
+    /* The Drawer Logic */
+    display: none; /* Hidden by default */
     flex-direction: column;
     align-items: center;
-    gap: 13px;
-    border-radius: 10px;
-    background: rgb(25, 55, 109);
-    background: linear-gradient(
-      0deg,
-      rgba(25, 55, 109, 0.2) 0%,
-      rgba(25, 55, 109, 1) 100%
-    );
-    padding: 24px 33px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    justify-content: center;
+    gap: 3rem; /* Big gaps between mobile links */
+    
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;      /* Full screen width */
+    height: 100vh;    /* Full screen height */
+    
+    background: rgba(10, 25, 47, 0.98); /* Solid dark blue */
+    z-index: 101;
+    padding: 0;
+    margin: 0;
   }
 
+  /* When open, show it as flex */
   .menuOpen {
     display: flex;
-    z-index: 1;
+  }
+
+  .menuItems a {
+    font-size: 2rem; /* Big clickable text on mobile */
+    font-weight: 700;
   }
 }
