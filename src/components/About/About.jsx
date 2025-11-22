@@ -1,10 +1,6 @@
-import React from "react";
-
 import styles from "./About.module.css";
-import aboutImage from "../../assets/about/aboutImage.png";
-import cursorIcon from "../../assets/about/cursorIcon.png";
-import serverIcon from "../../assets/about/serverIcon.png";
-import uiIcon from "../../assets/about/uiIcon.png";
+import aboutImage from "../../assets/about/passportPHOTO.jpeg";
+ 
 
 export const About = () => {
   return (
@@ -14,7 +10,7 @@ export const About = () => {
         <img
           src={aboutImage}
           alt="Me sitting with a laptop"
-          className={styles.aboutImage}
+          className={styles?.aboutImage}
         />
         <div className={styles.aboutText}>
           <h3>I'm a passionate MEAN stack developer who loves turning ideas into fully functional web apps.</h3>
