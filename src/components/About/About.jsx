@@ -1,6 +1,7 @@
 import styles from "./About.module.css";
 import aboutImage from "../../assets/about/passportPHOTO.jpeg";
- 
+
+
 
 export const About = () => {
   return (

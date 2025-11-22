@@ -141,8 +141,6 @@
   align-items: center;
 }
 
-/* ...existing code... */
-/* @import "../../vars.css"; */
 
 .container {
   margin-top: 76px;
