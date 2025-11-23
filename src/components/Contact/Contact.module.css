@@ -1,129 +1,160 @@
 @import "../../vars.css";
 
+/* --- MAIN CONTAINER --- */
 .container {
-  color: var(--color-text);
-  margin-top: 120px;
-  background: linear-gradient(120deg, #04162D 0%, #132B58 100%);
-  border-radius: 2.5rem;
-  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.18);
-  padding: 4rem 0;
-  margin: 2rem 0;
   position: relative;
-  overflow: hidden;
   width: 100%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.container::before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  height: 14px;
-  background: linear-gradient(90deg, #04162D 0%, #00bcd4 50%, #04162D 100%);
-  filter: blur(12px) brightness(2.2);
-  opacity: 0.9;
-  border-radius: 14px;
-  pointer-events: none;
-  z-index: 1;
-  animation: lightningGlowBlue 2.5s infinite alternate;
-}
-
-@keyframes lightningGlowBlue {
-  0% { opacity: 0.7; filter: blur(12px) brightness(1.5); }
-  100% { opacity: 1; filter: blur(18px) brightness(2.5); }
-}
-
-.text {
-  text-align: center;
-  color: #fff;
-  margin-bottom: 2rem;
-  font-size: 2.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.text h2, .text p {
-  font-size: 2.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 0.5rem;
-  color: #fff;
-  transition: text-shadow 0.3s, color 0.3s;
-}
-
-.text p {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-
-.text h2:hover, .text p:hover {
-  color: #04162D;
-  text-shadow: 0 0 18px #04162D, 0 0 32px #00bcd4;
-}
-
-.links {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.link {
+  /* Takes up about half the screen vertically */
+  min-height: 60vh;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(0, 188, 212, 0.08);
-  border-radius: 1rem;
-  padding: 1.2rem 1.7rem;
-  box-shadow: 0 4px 24px rgba(33, 150, 243, 0.10);
-  transition: box-shadow 0.2s, transform 0.2s;
+  justify-content: center;
+  padding: 50px 10%;
+  
+  z-index: 1;
+  overflow: hidden;
+
+  /* Background Pattern (Matches other sections) */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
+  
+  /* Gradient Fade at bottom */
+  background: linear-gradient(to top, #020c1b, transparent);
+}
+
+/* --- TITLE --- */
+.titleWrapper {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+/* --- TITLE STYLES --- */
+.sectionTitle {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  /* Adds a default cursor so it feels consistent when hovering */
+  cursor: default;
+}
+
+.hollowText {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+  /* Smooth transition for the glow effect */
+  transition: all 0.3s ease;
+}
+
+.colorText {
+  color: #00d2ff;
+  text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+}
+
+/* --- HOVER EFFECT: GLOW ON "MY" --- */
+.sectionTitle:hover .hollowText {
+  /* Turns the white outline into Cyan */
+  -webkit-text-stroke-color: #00d2ff;
+  /* Adds the soft neon glow */
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #aab6d3;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- LINKS GRID --- */
+.links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* --- THE CONTACT CARD --- */
+.link {
+  flex: 1;
+  min-width: 250px; /* Ensures they don't get too squished */
+  
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  
+  transition: all 0.4s ease;
+  cursor: pointer;
+  text-decoration: none; /* For the <a> tag wrapping it */
   position: relative;
+  overflow: hidden;
 }
 
+/* Hover Effect: Neon Charge */
 .link:hover {
-  box-shadow: 0 8px 32px #04162D;
-  transform: translateY(-4px) scale(1.05);
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 210, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
 }
 
-.link img {
-  width: 38px;
-  height: 38px;
-  margin-bottom: 0.7rem;
-  filter: drop-shadow(0 2px 8px #04162D);
+/* Icon Styling */
+.icon {
+  width: 50px;
+  height: auto;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+  transition: transform 0.4s ease;
 }
 
-.link a {
+.link:hover .icon {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 0 10px #00d2ff);
+}
+
+/* Text Styling */
+.linkText {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: #fff;
-  font-size: 1.1rem;
-  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Clickable Area */
+.link a {
   text-decoration: none;
-  margin-top: 0.2rem;
-  transition: color 0.2s;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-.link a:hover {
-  color: #04162D;
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 830px) {
+  .sectionTitle { font-size: 2.8rem; flex-direction: column; gap: 5px; }
+  .links { flex-direction: column; width: 100%; }
+  .link { width: 100%; flex: none; }
+  .container { padding: 50px 5%; }
 }
 
-@media screen and (max-width: 900px) {
-  .container {
-    padding: 2rem 0.5rem;
-    border-radius: 1.5rem;
-    max-width: 98vw;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .links {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-}

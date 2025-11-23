@@ -22,6 +22,7 @@
 }
 
 /* --- TITLE STYLES --- */
+/* --- TITLE STYLES --- */
 .sectionTitle {
   font-size: 3.5rem;
   font-weight: 900;
@@ -30,18 +31,28 @@
   display: flex;
   gap: 15px;
   justify-content: center;
-  position: relative;
-  z-index: 2;
+  /* Adds a default cursor so it feels consistent when hovering */
+  cursor: default;
 }
 
 .hollowText {
   color: transparent;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+  /* Smooth transition for the glow effect */
+  transition: all 0.3s ease;
 }
 
 .colorText {
   color: #00d2ff;
   text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+}
+
+/* --- HOVER EFFECT: GLOW ON "MY" --- */
+.sectionTitle:hover .hollowText {
+  /* Turns the white outline into Cyan */
+  -webkit-text-stroke-color: #00d2ff;
+  /* Adds the soft neon glow */
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
 }
 
 /* --- THE GRID LAYOUT (THE FIX) --- */
