@@ -3,22 +3,20 @@
 /* --- MAIN CONTAINER --- */
 .container {
   position: relative;
-  /* Ensure it takes up at least the full screen height */
   min-height: 100vh;
   width: 100%;
   
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Center content vertically if screen is large enough */
   justify-content: center;
   
-  /* Padding top accounts for fixed navbar */
-  padding: 80px 10% 40px 10%;
+  /* Adjusted Padding */
+  padding: 80px 10%;
   
   z-index: 1;
   
-  /* Background pattern (Matches About) */
+  /* Background pattern */
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -26,17 +24,16 @@
   background-position: center;
 }
 
-/* --- TITLE (Matches About Section) --- */
+/* --- TITLE --- */
 .sectionTitle {
   font-size: 3.5rem;
   font-weight: 900;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   line-height: 1;
   position: relative;
   z-index: 2;
   
-  /* Flex ensures words sit next to each other */
   display: flex;
   gap: 15px; 
   justify-content: center;
@@ -61,17 +58,17 @@
 
 /* --- MASONRY GRID LAYOUT --- */
 .gridContainer {
-  display: grid;
-  /* Responsive columns: Fits as many 300px cards as possible */
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;       /* Allows items to wrap to next line */
+  justify-content: center; /* CENTERS the items (Fixes empty space) */
+  gap: 2rem;
+  
   width: 100%;
   max-width: 1200px;
 }
 
 /* --- GLASS CATEGORY CARDS --- */
 .categoryCard {
-  /* The Glass Look */
   background: linear-gradient(
     135deg, 
     rgba(255, 255, 255, 0.05) 0%, 
@@ -83,41 +80,43 @@
   border-left: 1px solid rgba(255, 255, 255, 0.2);
   
   border-radius: 1.5rem;
+  
+  /* MEDIUM PADDING: 1.8rem is the balance */
   padding: 1.8rem;
   
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   transition: all 0.4s ease;
   
-  /* Entry Animation */
-  opacity: 0;
-  animation: slideUp 0.6s ease forwards;
+  display: flex;
+  flex-direction: column;
+  
+  /* FLEX SIZING MAGIC */
+  /* Grow: 1, Shrink: 1, Base Width: 300px */
+  /* This allows cards to stretch to fill gaps, but stay roughly 300px wide */
+  flex: 1 1 300px; 
+  
+  /* Prevent them from getting too wide on large screens */
+  max-width: 400px; 
 }
 
-/* Card Hover Effect */
 .categoryCard:hover {
   transform: translateY(-5px);
   border-color: rgba(0, 210, 255, 0.4);
-  box-shadow: 0 0 30px rgba(0, 210, 255, 0.1);
   background: rgba(255, 255, 255, 0.07);
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- CARD HEADER --- */
 .headerWrapper {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 1.5rem;
+    gap: 12px;
+    margin-bottom: 1.2rem;
 }
 
 .categoryTitle {
-  font-size: 1.4rem;
+  font-size: 1.2rem; /* Slightly smaller font */
   font-weight: 700;
-  color: #fff; /* Force White */
+  color: #fff;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -125,72 +124,67 @@
 .line {
     flex: 1;
     height: 1px;
-    /* Cyan Gradient Line */
     background: linear-gradient(90deg, #00d2ff, transparent);
     opacity: 0.6;
 }
 
-/* --- TOOLS GRID (Chips) --- */
+/* --- TOOLS GRID --- */
 .toolsGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 10px; /* Tighter gap between buttons */
 }
 
 /* --- INDIVIDUAL TOOL CHIP --- */
 .toolItem {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   
-  /* Darker inner chip for contrast */
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 10px 16px;
-  border-radius: 12px;
   
+  /* REDUCED BUTTON PADDING: Makes buttons compact */
+  padding: 8px 14px;
+  
+  border-radius: 10px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: default;
 }
 
-/* Chip Hover: Neon Pop */
 .toolItem:hover {
   background: rgba(0, 210, 255, 0.15);
   border-color: #00d2ff;
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
 }
 
 .skillIcon {
-  width: 24px;
-  height: 24px;
+  width: 20px; /* Smaller icon */
+  height: 20px;
   object-fit: contain;
 }
 
-/* Fallback Dot (if no icon) */
 .dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background: #00d2ff;
     border-radius: 50%;
-    box-shadow: 0 0 5px #00d2ff;
 }
 
 .skillName {
-  font-size: 1rem;
+  font-size: 0.95rem; /* Smaller text */
   font-weight: 500;
-  color: #e0e6ed; /* Light Grey */
+  color: #e0e6ed;
 }
 
-/* Text turns white on hover */
 .toolItem:hover .skillName {
     color: #fff;
 }
 
 /* --- MOBILE RESPONSIVE --- */
 @media screen and (max-width: 768px) {
-  .sectionTitle { font-size: 2.8rem; flex-direction: column; gap: 5px; }
-  .gridContainer { grid-template-columns: 1fr; } /* Single column stack */
-  .categoryCard { padding: 1.5rem; }
-  .container { padding: 100px 5% 50px 5%; height: auto; }
+  .sectionTitle { font-size: 2.8rem; flex-direction: column; gap: 5px; margin-bottom: 3rem; }
+  .gridContainer { grid-template-columns: 1fr; }
+  .categoryCard { padding: 1.2rem; }
+  .container { padding: 80px 5%; height: auto; }
 }

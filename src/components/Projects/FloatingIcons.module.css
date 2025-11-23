@@ -1,0 +1,18 @@
+.iconsContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; /* Sit behind the project cards */
+    pointer-events: none; /* Ensure they don't block clicks */
+}
+
+.floatingIcon {
+    position: absolute;
+    width: 60px; /* Adjust size as needed */
+    height: auto;
+    opacity: 0.15; /* Very subtle and faded */
+    filter: blur(2px) grayscale(50%); /* Blurry and desaturated so they don't distract */
+}

@@ -1,251 +1,188 @@
 @import "../../vars.css";
 
-.experienceSection {
-  min-height: 100vh;
+/* --- CONTAINER --- */
+.container {
+  position: relative;
   width: 100%;
-  padding: 60px 0 40px 0;
-  background: linear-gradient(135deg, #0A1F40 0%, #163564 60%, #0E2C4C 100%);
+  min-height: 80vh; 
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 80px 10%;
+  z-index: 1;
+
+  /* Grid Background Pattern */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
 }
 
-.heading {
-  color: #fff;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 8px rgba(10,31,64,0.3);
+/* --- TITLE STYLES --- */
+.sectionTitle {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.hollowText {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+}
+
+.colorText {
+  color: #00d2ff;
+  text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+}
+
+/* --- LAYOUT WRAPPER --- */
+.contentWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px; /* Slightly narrower for focus */
+  display: flex;
+}
+
+/* --- THE TIMELINE LINE --- */
+.timelineLine {
+  position: absolute;
+  /* Align line exactly through the center of the dots */
+  left: 9px; 
+  top: 10px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #00d2ff, rgba(255, 255, 255, 0.1));
+  z-index: 0;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
 }
 
 .cardsContainer {
   display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  justify-content: center;
-  width: 90%;
-  max-width: 1100px;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
+/* --- THE CARD WRAPPER --- */
 .card {
-  background: rgba(22,53,100,0.85);
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(14,44,76,0.18);
-  padding: 32px 28px;
-  min-width: 260px;
-  max-width: 340px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeInUp 0.8s cubic-bezier(.6,.2,.2,1) forwards;
+  gap: 2rem; /* Gap between Dot and Card box */
+  align-items: flex-start;
+  width: 100%;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.logoWrapper {
-  flex: 0 0 60px;
-  margin-right: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
+/* --- THE GLOWING DOT (Replaces Logo) --- */
+.timelinePoint {
+  min-width: 20px;
+  height: 20px;
+  background: #0a192f; /* Dark center */
+  border: 3px solid #00d2ff; /* Cyan border */
   border-radius: 50%;
-  background: #0E2C4C;
-  box-shadow: 0 2px 8px rgba(10,31,64,0.12);
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+  z-index: 2; /* Sits on top of the line */
+  margin-top: 5px; /* Align with top of card */
 }
 
-.details {
+/* Hover effect on the dot when hovering the card */
+.card:hover .timelinePoint {
+  background: #00d2ff;
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
+}
+
+/* --- CONTENT CARD (Glassmorphism) --- */
+.cardContent {
   flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.company {
-  color: #fff;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 6px;
+.cardContent:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 210, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* --- TEXT STYLES --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .role {
-  color: #b3c6e0;
-  font-size: 1.05rem;
-  margin-bottom: 4px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 5px;
 }
 
-.duration {
-  color: #7fa1d6;
-  font-size: 0.95rem;
-  margin-bottom: 8px;
+.company {
+  font-size: 1.1rem;
+  color: #00d2ff;
+  font-weight: 500;
 }
 
-.description {
-  color: #e0e6ed;
-  font-size: 0.98rem;
-  line-height: 1.5;
+.date {
+  font-size: 0.9rem;
+  color: #aab6d3;
+  font-family: monospace;
+  background: rgba(255,255,255,0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  height: fit-content;
 }
 
-@media (max-width: 900px) {
-  .cardsContainer {
-    gap: 20px;
-  }
-  .card {
-    min-width: 220px;
-    max-width: 95vw;
-    padding: 24px 16px;
-  }
+.descriptionList {
+  list-style: none;
+  padding: 0;
 }
 
-@media (max-width: 600px) {
-  .experienceSection {
-    padding: 32px 0 20px 0;
-  }
-  .heading {
-    font-size: 2rem;
-    margin-bottom: 24px;
-  }
-  .cardsContainer {
-    gap: 12px;
-  }
-  .card {
-    min-width: 160px;
-    padding: 16px 8px;
+.descItem {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: #d1d5db;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.descItem::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: #00d2ff;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 768px) {
+  .header {
     flex-direction: column;
     align-items: flex-start;
   }
-  .logoWrapper {
-    margin-right: 0;
-    margin-bottom: 12px;
+  
+  .card {
+    gap: 1rem;
   }
-}
-@import "../../vars.css";
-
-.container {
-  color: var(--color-text);
-  margin-top: 79px;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.title {
-  color: var(--color-text);
-  font-size: 35px;
-  font-weight: 700;
-  letter-spacing: 1.75px;
-  text-transform: uppercase;
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-top: 14px;
-}
-
-.skills {
-  width: 45%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 37px;
-}
-
-.skill {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 11px;
-}
-
-.skillImageContainer {
-  background-color: var(--color-secondary);
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 120px;
-}
-
-.skillImageContainer img {
-  width: 75px;
-}
-
-.skill p {
-  font-size: 25px;
-  font-family: var(--font-roboto);
-  font-weight: 500;
-}
-
-.history {
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.historyItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 17px;
-  background: #19376d;
-  background: linear-gradient(90deg, #19376d 0%, rgba(25, 55, 109, 0) 100%);
-  border-radius: 10px;
-  padding: 24px;
-}
-
-.historyItem img {
-  width: 50px;
-}
-
-.historyItemDetails {
-  font-family: var(--font-roboto);
-}
-
-.historyItemDetails h3 {
-  font-size: 30px;
-  font-weight: 500;
-}
-
-.historyItemDetails p {
-  font-size: 20px;
-  font-weight: 300;
-}
-
-.historyItemDetails ul {
-  margin-top: 6px;
-  list-style-position: inside;
-  font-size: 25px;
-  list-style-type: disc;
-  margin-left: 17px;
-}
-
-@media screen and (max-width: 830px) {
-  .content {
-    flex-direction: column;
-    align-items: center;
-    gap: 34px;
-  }
-
-  .skills {
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .history {
-    width: 100%;
-    gap: 9px;
-  }
+  
+  .container { padding: 4rem 5%; }
 }
