@@ -1,67 +1,76 @@
-// About.tsx
 import { motion } from "framer-motion";
-import aboutImage from "../../assets/about/passportPHOTO.jpeg";
 import styles from "./About.module.css";
+import aboutImage from "../../assets/about/passportPHOTO.jpeg";
 
 export const About = () => {
+  const skills = [
+    ["🚀", "Scalable Backend Systems"],
+    ["💻", "MongoDB • Express • React • Node"],
+    ["📚", "Continuous Learner"],
+  ];
+
   return (
     <section id="about" className={styles.container}>
-      {/* SECTION TITLE */}
+      {/* Removed the "Orbs" div here if you want it cleaner */}
+
+      {/* Title */}
       <motion.h2
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className={styles.sectionTitle}
       >
-        About <span>Me</span>
+        <span className={styles.hollowText}>ABOUT</span>
+        <span className={styles.colorText}>ME</span>
       </motion.h2>
 
       <div className={styles.gridContainer}>
-        {/* PROFILE CARD */}
+        {/* Profile Card - CHANGED ANIMATION */}
+        {/* Now it just gently fades in and scales up slightly. No big slide. */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className={styles.profileCard}
         >
-          <img src={aboutImage} alt="Aditya" className={styles.avatar} />
+          <div className={styles.avatarWrapper}>
+            <img src={aboutImage} alt="Aditya" className={styles.avatar} />
+          </div>
+          
           <h3 className={styles.name}>Aditya Maheshwari</h3>
-          <span className={styles.badge}>MEAN Stack Developer</span>
+          <span className={styles.badge}>MERN Stack Developer</span>
         </motion.div>
 
-        {/* BIO CARD */}
+        {/* BIO */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, x: 50 }} /* Kept slight movement here, or remove x if preferred */
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
           className={styles.bioCard}
         >
-          <h3>Turning ideas into <span>functional reality.</span></h3>
+          <h3>
+            Turning ideas into <span className={styles.colorText}>functional reality</span>.
+          </h3>
           <p>
-            I focus on building fast, scalable solutions with strong emphasis on 
-            <strong> Clean Code & Great UX. </strong>
-            I constantly learn, iterate, and evolve with tech — because stagnation is not an option.
+            Building high-performance, scalable apps with a strong focus on{" "}
+            <strong>clean code</strong> & <strong>seamless user experience</strong>.
           </p>
         </motion.div>
 
-        {/* SKILLS CARD */}
+        {/* SKILLS */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className={styles.skillsCard}
         >
-          {[
-            ["🚀", "Scalable Backend Systems"],
-            ["💻", "MongoDB • Express • Angular • Node"],
-            ["📚", "Continuous Learner"],
-          ].map(([icon, text], idx) => (
+          {skills.map(([icon, text], idx) => (
             <motion.div
               key={idx}
-              whileHover={{ scale: 1.05, x: 5 }}
+              whileHover={{ scale: 1.02, x: 5 }}
               className={styles.skillItem}
             >
-              <span>{icon}</span>
+              <span className={styles.icon}>{icon}</span>
               <p>{text}</p>
             </motion.div>
           ))}

@@ -1,183 +1,196 @@
+@import "../../vars.css";
+
+/* --- MAIN CONTAINER --- */
 .container {
+  position: relative;
+  /* Ensure it takes up at least the full screen height */
+  min-height: 100vh;
+  width: 100%;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.2rem 0;
-  background: linear-gradient(120deg, #04162D 0%, #132B58 100%);
-  border-radius: 2rem;
-  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.12);
-  margin: 1rem 0;
-  max-width: 1400px;
-  width: 98vw;
-  margin-left: auto;
-  margin-right: auto;
+  /* Center content vertically if screen is large enough */
+  justify-content: center;
+  
+  /* Padding top accounts for fixed navbar */
+  padding: 80px 10% 40px 10%;
+  
+  z-index: 1;
+  
+  /* Background pattern (Matches About) */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
 }
 
-.title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #00bcd4;
-  margin-bottom: 1rem;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 8px rgba(0, 188, 212, 0.2);
+/* --- TITLE (Matches About Section) --- */
+.sectionTitle {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 3rem;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+  
+  /* Flex ensures words sit next to each other */
+  display: flex;
+  gap: 15px; 
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.skills {
+.hollowText {
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.colorText {
+  color: #00d2ff;
+  text-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
+}
+
+.sectionTitle:hover .hollowText {
+  -webkit-text-stroke-color: #00d2ff;
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+/* --- MASONRY GRID LAYOUT --- */
+.gridContainer {
+  display: grid;
+  /* Responsive columns: Fits as many 300px cards as possible */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* --- GLASS CATEGORY CARDS --- */
+.categoryCard {
+  /* The Glass Look */
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.05) 0%, 
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  
+  border-radius: 1.5rem;
+  padding: 1.8rem;
+  
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  
+  /* Entry Animation */
+  opacity: 0;
+  animation: slideUp 0.6s ease forwards;
+}
+
+/* Card Hover Effect */
+.categoryCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 210, 255, 0.4);
+  box-shadow: 0 0 30px rgba(0, 210, 255, 0.1);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- CARD HEADER --- */
+.headerWrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+}
+
+.categoryTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff; /* Force White */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.line {
+    flex: 1;
+    height: 1px;
+    /* Cyan Gradient Line */
+    background: linear-gradient(90deg, #00d2ff, transparent);
+    opacity: 0.6;
+}
+
+/* --- TOOLS GRID (Chips) --- */
+.toolsGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
+  gap: 10px;
 }
 
-.skill {
-  background: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(33, 150, 243, 0.15);
-  padding: 1.5rem 1rem;
+/* --- INDIVIDUAL TOOL CHIP --- */
+.toolItem {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  min-width: 120px;
-  max-width: 140px;
-  animation: fadeInUp 0.8s ease;
+  gap: 10px;
+  
+  /* Darker inner chip for contrast */
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 16px;
+  border-radius: 12px;
+  
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
 }
 
-.skill:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.25);
+/* Chip Hover: Neon Pop */
+.toolItem:hover {
+  background: rgba(0, 210, 255, 0.15);
+  border-color: #00d2ff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
 }
 
 .skillIcon {
-  width: 32px;
-  height: 32px;
-  filter: drop-shadow(0 2px 8px rgba(0, 188, 212, 0.2));
-  transition: none;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Fallback Dot (if no icon) */
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #00d2ff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #00d2ff;
 }
 
 .skillName {
   font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  margin: 0;
-  padding: 0;
+  font-weight: 500;
+  color: #e0e6ed; /* Light Grey */
 }
 
-.category {
-  width: 100%;
-  max-width: 1200px;
-  margin-bottom: 0.7rem;
-  background: rgba(0, 188, 212, 0.08);
-  border-radius: 1.2rem;
-  box-shadow: 0 4px 24px rgba(33, 150, 243, 0.10);
-  padding: 0.7rem 1rem;
+/* Text turns white on hover */
+.toolItem:hover .skillName {
+    color: #fff;
 }
 
-.categoryTitle {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #00bcd4;
-  margin-bottom: 0.7rem;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 8px rgba(0, 188, 212, 0.18);
-}
-
-.tools {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0.5rem;
-}
-
-.tool {
-  background: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
-  color: #fff;
-  border-radius: 1.2rem;
-  box-shadow: 0 4px 24px rgba(33, 150, 243, 0.18);
-  padding: 0.7rem 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: none;
-  cursor: pointer;
-  position: relative;
-}
-
-.toolTagline {
-  display: none;
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes crazyPop {
-  0% {
-    opacity: 0;
-    transform: scale(0.5) rotate(-30deg);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.1) rotate(8deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .container {
-    max-width: 99vw;
-  }
-  .category {
-    max-width: 99vw;
-    padding: 0.7rem 0.5rem;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .container {
-    padding: 0.7rem 0.2rem;
-    border-radius: 1rem;
-    max-width: 99vw;
-  }
-  .category {
-    padding: 0.5rem 0.2rem;
-    border-radius: 0.7rem;
-    max-width: 99vw;
-  }
-  .tools {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.5rem;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .container {
-    padding: 0.3rem 0.1rem;
-    border-radius: 0.7rem;
-    max-width: 100vw;
-  }
-  .category {
-    padding: 0.2rem 0.1rem;
-    border-radius: 0.5rem;
-    max-width: 100vw;
-  }
-  .title {
-    font-size: 1.2rem;
-  }
-  .tools {
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-    gap: 0.3rem;
-  }
+/* --- MOBILE RESPONSIVE --- */
+@media screen and (max-width: 768px) {
+  .sectionTitle { font-size: 2.8rem; flex-direction: column; gap: 5px; }
+  .gridContainer { grid-template-columns: 1fr; } /* Single column stack */
+  .categoryCard { padding: 1.5rem; }
+  .container { padding: 100px 5% 50px 5%; height: auto; }
 }
